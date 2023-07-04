@@ -11,6 +11,8 @@ services:
     image: nodejs
     networks:
       - node-nginx-app
+    volumes:
+      - ./nodejs/src:/usr/app/src
     depends_on:
       - mysql
 
