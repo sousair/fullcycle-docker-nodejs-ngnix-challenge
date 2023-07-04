@@ -8,7 +8,7 @@ services:
     build:
       context: ./nodejs
       dockerfile: Dockerfile
-    image: nodejs
+    image: nodejs-fc
     networks:
       - node-nginx-app
     volumes:
@@ -40,7 +40,7 @@ services:
     build: 
       context: ./nginx
       dockerfile: Dockerfile
-    image: nginx
+    image: nginx-fc
     ports:
       - 8080:80
     depends_on: 
