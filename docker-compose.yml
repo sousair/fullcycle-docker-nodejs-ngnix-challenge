@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
     image: nodejs
     networks:
-      - node-nginix-app
+      - node-nginx-app
     depends_on:
       - mysql
 
@@ -21,7 +21,7 @@ services:
     container_name: mysql
     restart: always
     networks:
-      - node-nginix-app
+      - node-nginx-app
     environment:
       - MYSQL_DATABASE=nodejs
       - MYSQL_USER=mysql.user
@@ -34,7 +34,7 @@ services:
   nginx:
     container_name: nginix
     networks:
-      - node-nginix-app
+      - node-nginx-app
     build: 
       context: ./nginx
       dockerfile: Dockerfile
@@ -45,5 +45,6 @@ services:
       - nodejs
 
 networks:
-  node-nginix-app:
+  node-nginx-app:
+    name: node-nginx-app
     driver: bridge
