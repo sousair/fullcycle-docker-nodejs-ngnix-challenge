@@ -32,7 +32,7 @@ services:
       - ./mysql/init:/docker-entrypoint-initdb.d
 
   nginx:
-    container_name: nginix
+    container_name: nginx
     networks:
       - node-nginx-app
     build: 
