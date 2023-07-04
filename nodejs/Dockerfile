@@ -1,15 +1,12 @@
+
+
 FROM node:18.15.0
 
-WORKDIR /usr/app
+RUN apt update && \
+    apt install -y wget netcat && \
+    wget -q -O /usr/bin/wait-for https://raw.githubusercontent.com/eficode/wait-for/v2.2.3/wait-for && \
+    chmod +x /usr/bin/wait-for
 
-COPY package.json .
-COPY src ./src
+USER node 
 
-RUN npm install --quiet
-
-RUN wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
-RUN chmod +x wait-for-it.sh
-
-EXPOSE 80
-
-ENTRYPOINT ["./wait-for-it.sh" , "mysql:3306" , "--strict" , "--timeout=300" , "--" , "npm", "start"]
+WORKDIR /usr/src/app

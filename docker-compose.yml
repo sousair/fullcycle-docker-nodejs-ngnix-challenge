@@ -9,10 +9,11 @@ services:
       context: ./nodejs
       dockerfile: Dockerfile
     image: nodejs-fc
+    entrypoint: wait-for mysql:3306 -t 20 -- sh -c "npm install --quiet && npm start"
     networks:
       - node-nginx-app
     volumes:
-      - ./nodejs/src:/usr/app/src
+      - ./nodejs/src:/usr/src/app
     depends_on:
       - mysql
 
