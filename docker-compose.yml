@@ -28,8 +28,8 @@ services:
       - MYSQL_PASSWORD=mysql.password
       - MYSQL_ROOT_PASSWORD=mysql.root.password
     volumes:
-      - /mysql/data:/var/lib/mysql
-      - /mysql/initdb:/docker-entrypoint-initdb.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
 
   nginx:
     container_name: nginix
