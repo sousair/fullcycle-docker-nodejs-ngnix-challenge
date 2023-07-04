@@ -11,4 +11,4 @@ const connection = mysql2.createConnection({
 
 module.exports = {
   connection,
-}
+};
